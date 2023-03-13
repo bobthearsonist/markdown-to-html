@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "markdown-to-html", "markdow
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "markdown-to-html.tests", "markdown-to-html.tests\markdown-to-html.tests.csproj", "{508170E0-E281-42E8-B09C-E2EB74C746B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "markdown-to-html-lib", "markdown-to-html-lib\markdown-to-html-lib.csproj", "{7E097F6F-19BD-4329-999C-3F227760693F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{508170E0-E281-42E8-B09C-E2EB74C746B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{508170E0-E281-42E8-B09C-E2EB74C746B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{508170E0-E281-42E8-B09C-E2EB74C746B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E097F6F-19BD-4329-999C-3F227760693F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E097F6F-19BD-4329-999C-3F227760693F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E097F6F-19BD-4329-999C-3F227760693F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E097F6F-19BD-4329-999C-3F227760693F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
