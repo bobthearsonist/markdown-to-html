@@ -27,6 +27,9 @@ public class Tests
 
         var actual = new MemoryStream();
         MarkDownToHtml.Convert(input).CopyTo(actual);
+        
         actual.ToArray().Should().BeEquivalentTo(expected.ToArray());
+
+        //actual.ToArray().Should().BeEquivalentTo(expected.ToArray());
     }
 }
