@@ -6,31 +6,29 @@ namespace markdown_to_html_lib;
 
 public static class BlockExtension
 {
-    private static Dictionary<Type, Func<IBlock, HtmlNode>> _blockTypeToHtmlTagLookup = new()
+    private static readonly Dictionary<Type, Func<IBlock, HtmlNode>> BlockTypeToHtmlTagLookup = new()
     {
-        { typeof(HeadingBlock), FormatHeader },
+        { typeof(HeadingBlock), Formatter.Header },
         
         // TODO find what these types are
-        // { typeof("Text"),"p"},
-        // { typeof("Link"),"a"},
-        // { typeof("Blank"),""}
+        { typeof(ParagraphBlock), Formatter.Paragraph },
+        // { typeof(HeadingBlock), Formatter.Link },
+        // { typeof(HeadingBlock), Formatter.Blank },
     };
-
-    private static HtmlNode FormatHeader(IBlock block)
-    {
-        var headingBlock = (block as HeadingBlock);
-        var headingText = headingBlock?.Inline!.First();
-        var level = headingBlock!.Level; 
-        return HtmlNode.CreateNode("<h" + level + ">" + headingText + "</h" + level + ">");
-    }
 
     public static HtmlNode Map(this IBlock block)
     {
-        //TODO implement the actual mappings.
-        var node = HtmlNode.CreateNode("<h1>" 
-                                       + (block as HeadingBlock)?.Inline!.First() 
-                                       + "</h1>"
-                                );
-        return node;
+        try
+        {
+            var node = BlockTypeToHtmlTagLookup[block.GetType()](block);
+            return node;
+        }
+        catch (KeyNotFoundException)
+        {
+            // TODO handle this gracefully? how? skip unsupported nodes and return exception collection?
+            throw new NotImplementedException("Converting elements of "
+                                              + block.GetType()
+                                              + " is not supported.");
+        }
     }
 }
