@@ -6,18 +6,25 @@ namespace markdown_to_html_lib;
 
 public static class BlockExtension
 {
-    //use values that are function pointers and return the parsed/formatted html? Func<HtmlNode>()
-    static Dictionary<Type, string> blockTypeToHtmlTagLookup = new()
+    private static Dictionary<Type, Func<IBlock, HtmlNode>> _blockTypeToHtmlTagLookup = new()
     {
-        // TODO you will need to pars what level heading it is somehow and then do the other levels
-        { typeof(HeadingBlock), "h1" },
+        { typeof(HeadingBlock), FormatHeader },
+        
         // TODO find what these types are
         // { typeof("Text"),"p"},
         // { typeof("Link"),"a"},
         // { typeof("Blank"),""}
     };
 
-    public static HtmlNode Map(this Block block)
+    private static HtmlNode FormatHeader(IBlock block)
+    {
+        var headingBlock = (block as HeadingBlock);
+        var headingText = headingBlock?.Inline!.First();
+        var level = headingBlock!.Level; 
+        return HtmlNode.CreateNode("<h" + level + ">" + headingText + "</h" + level + ">");
+    }
+
+    public static HtmlNode Map(this IBlock block)
     {
         //TODO implement the actual mappings.
         var node = HtmlNode.CreateNode("<h1>" 
