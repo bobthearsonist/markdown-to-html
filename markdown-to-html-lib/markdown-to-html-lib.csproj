@@ -7,4 +7,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
+    <PackageReference Include="Markdig" Version="0.31.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="JetBrains.ReSharper.TestRunner.Abstractions">
+      <HintPath>..\..\..\Library\Application Support\JetBrains\Toolbox\apps\Rider\ch-0\223.8214.53\Rider.app\Contents\lib\ReSharperHost\TestRunner\netcoreapp3.0\JetBrains.ReSharper.TestRunner.Abstractions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

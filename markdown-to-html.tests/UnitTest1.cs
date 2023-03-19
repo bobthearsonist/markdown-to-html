@@ -15,8 +15,8 @@ public class Tests
     [Test]
     public void Example1()
     {
-        var input = new MemoryStream();
-        var expected = new MemoryStream();
+        using var input = new MemoryStream();
+        using var expected = new MemoryStream();
         
         Assembly.GetExecutingAssembly()
                 .GetManifestResourceStream("markdown_to_html.tests.example.markdown.example1.md")
@@ -25,8 +25,7 @@ public class Tests
             .GetManifestResourceStream("markdown_to_html.tests.example.html.example1.html")
             ?.CopyTo(expected);
 
-        var actual = new MemoryStream();
-        MarkDownToHtml.Convert(input).CopyTo(actual);
+        using var actual = MarkDownToHtml.Convert(input);
         
         actual.ToArray().Should().BeEquivalentTo(expected.ToArray());
     }
