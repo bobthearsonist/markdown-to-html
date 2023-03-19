@@ -5,6 +5,10 @@ This repository contains two "main" projects
 * [a lib](/markdown-to-html-lib) for parsing md to html
 * [a cli app](/markdown-to-html) for running the lib from the command line
 
+## Links
+
+[repo in github](https://github.com/bobthearsonist/markdown-to-html)
+
 ## Overview
 
 I used two libs in the interest of time, both can do the conversions needed, however those features were not leveraged to follow the instructions of the assignment.
