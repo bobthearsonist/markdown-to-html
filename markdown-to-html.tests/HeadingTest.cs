@@ -15,6 +15,6 @@ public class HeadingTest
         
         var decoded = Encoding.UTF8.GetString(actual.ToArray());
         
-        decoded.Should().BeEquivalentTo("<h1>heading 1 example<h1>");
+        decoded.Should().BeEquivalentTo("<h1>heading 1 example</h1>");
     }
 }
