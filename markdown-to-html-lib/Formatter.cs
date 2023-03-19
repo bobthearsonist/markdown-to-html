@@ -23,7 +23,7 @@ public abstract class Formatter
     
     public static HtmlNode Paragraph(IBlock block)
     {
-        string text = "";
+        var text = (block as ParagraphBlock)?.Inline!.First().ToString()!;
         return HtmlNode.CreateNode($"<p>{text}</p>");
     }
     
